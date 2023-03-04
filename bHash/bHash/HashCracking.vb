@@ -178,7 +178,7 @@ Module HashCracking
     End Function
     'END SHA 256 METHODS
 
-    Public Function GuessSHA1HashByteBrute() As String
+ Public Function GuessSHA1HashByteBrute() As String
         Dim rng As New Random()
         Dim alphabet As String = "abcdefghijklmnopqrstuvwxyz"
         Dim inputBytes() As Byte
@@ -196,7 +196,8 @@ Module HashCracking
                 hashBytes = sha1.ComputeHash(inputBytes)
                 Dim hashString As String = BitConverter.ToString(hashBytes).Replace("-", "").ToLower()
                 If hashString = Hash Then
-                    Console.WriteLine(Hash + " > " + Encoding.UTF8.GetString(inputBytes))
+                    Dim hash_string = "@/sha1/cracked?=" + hashString + " > " + Encoding.UTF8.GetString(inputBytes)
+                    Console.WriteLine(hash_string)
                     Found = True
                 Else
                     Console.WriteLine(hashString + " > Length:" + hashString.Length.ToString + " > Attempt #" + i.ToString + vbNewLine)
@@ -206,6 +207,5 @@ Module HashCracking
 
         Return Nothing
     End Function
-
 
 End Module
