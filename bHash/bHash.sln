@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "bHash", "bHash\bHash.vbproj", "{E6DB8515-0A09-4319-A721-B1F82E8300DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6DB8515-0A09-4319-A721-B1F82E8300DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6DB8515-0A09-4319-A721-B1F82E8300DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6DB8515-0A09-4319-A721-B1F82E8300DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6DB8515-0A09-4319-A721-B1F82E8300DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C76C48F-E663-4A59-967B-CA48D0804B41}
+	EndGlobalSection
+EndGlobal
