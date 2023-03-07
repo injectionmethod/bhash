@@ -10,11 +10,20 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
 -*md5*
 
 [Commands Examples]
-- dictionary bruteforce | *bhash [hashtype] [hash] -d [chosen dictionaries]* | ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
-- directory bruteforce | *bhash [hashtype] [hash] -a [chosen directory]*     | ex: bhash sha265 1b5c3 -a C:\exampleDirectory
-- random bruteforce | *bhash [hashtype] [hash] -r [threads] [max attempts per thread]*  | ex: bhash sha265 1b5c3 -r 10 300000
-- create hashlist for NTLM (indev) | *bhash NTLM -g [chosen dictionary] [output file]*  | ex: bhash NTLM C:\examplefile C:\exampleoutput
-- update existing dictionary | *bhash -n [string] [file]*  | ex: bhash -n examplepassword123 C:\examplefile
+- dictionary bruteforce | *bhash [hashtype] [hash] -d [chosen dictionaries]*
+ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
+
+- directory bruteforce | *bhash [hashtype] [hash] -a [chosen directory]*
+- ex: bhash sha265 1b5c3 -a C:\exampleDirectory
+- 
+- random bruteforce | *bhash [hashtype] [hash] -r [threads] [max attempts per thread]*
+- ex: bhash sha265 1b5c3 -r 10 300000
+- 
+- create hashlist for NTLM (indev) | *bhash NTLM -g [chosen dictionary] [output file]*
+- ex: bhash NTLM C:\examplefile C:\exampleoutput
+- 
+- update existing dictionary | *bhash -n [string] [file]*
+- ex: bhash -n examplepassword123 C:\examplefile
 
 Last Build Notes:
 - Added Write Function To Update Lists
