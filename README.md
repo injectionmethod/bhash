@@ -10,9 +10,9 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
 -*md5*
 
 [Commands Examples]
-- dictionary bruteforce | *bhash [hashtype] hash -d [chosen dictionaries]*
-- directory bruteforce | *bhash [hashtype] hash -a [chosen directory]*
-- random bruteforce | *bhash [hashtype] hash -r [threads] [max attempts per thread]*
+- dictionary bruteforce | *bhash [hashtype] [hash] -d [chosen dictionaries]*
+- directory bruteforce | *bhash [hashtype] [hash] -a [chosen directory]*
+- random bruteforce | *bhash [hashtype] [hash] -r [threads] [max attempts per thread]*
 - create hashlist for NTLM (indev) | *bhash NTLM -g [chosen dictionary] [output file]*
 - update existing dictionary | *bhash NTLM -n [string] [file]*
 
