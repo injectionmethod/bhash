@@ -20,6 +20,7 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
  
 - update existing dictionary | *bhash -n [string] [file]*
 
+[Commands Copy Pastes]
 - ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
 - ex: bhash sha265 1b5c3 -a C:\exampleDirectory
 - ex: bhash sha265 1b5c3 -r 10 300000
