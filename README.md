@@ -20,11 +20,11 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
  
 - update existing dictionary | *bhash -n [string] [file]*
 
-ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
-ex: bhash sha265 1b5c3 -a C:\exampleDirectory
-ex: bhash sha265 1b5c3 -r 10 300000
-ex: bhash NTLM C:\examplefile C:\exampleoutput
-ex: bhash -n examplepassword123 C:\examplefile
+- ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
+- ex: bhash sha265 1b5c3 -a C:\exampleDirectory
+- ex: bhash sha265 1b5c3 -r 10 300000
+- ex: bhash NTLM C:\examplefile C:\exampleoutput
+- ex: bhash -n examplepassword123 C:\examplefile
 
 Last Build Notes:
 - Added Write Function To Update Lists
