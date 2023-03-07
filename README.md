@@ -1,7 +1,7 @@
 # bhash
 bHash is a simple hash cracking tool and and NTLM attack dictionary converter
 
-- Windows Supported
+- Windows 11 Supported
 - note: hash conversion can produce very large file sizes, its best to split dictionaries
 
 
