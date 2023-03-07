@@ -16,6 +16,8 @@
     Public Function StageSHA1Session(method As String)
         If method = "-r" Then
             SHA1BruteStageThreadLoader()
+        ElseIf method = "-d" Then
+            GuessSHA256HashDictionaryBrute()
         End If
     End Function
     Public Function StageNTLMSession(method As String)

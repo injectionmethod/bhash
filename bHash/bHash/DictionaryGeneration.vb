@@ -22,6 +22,26 @@ Module DictionaryGeneration
         End If
         Console.WriteLine("Converted All Items In Dataset")
     End Function
+    Public Function UpdateFile(a As String, b As String)
+        If IO.File.Exists(b) Then
+            Dim OriginalNameAltered = b + "S-S76-S"
+            Dim sw As New StreamWriter(OriginalNameAltered) : sw.AutoFlush = True
+            Console.WriteLine("{+} Updating File!")
+            For Each c In IO.File.ReadAllLines(b)
+                sw.WriteLine(c)
+            Next
+            sw.WriteLine(a)
+            sw.Close()
+            IO.File.Delete(b)
+            IO.File.Copy(OriginalNameAltered, b)
+            IO.File.Delete(OriginalNameAltered)
+            Console.WriteLine("{+} File Updated")
+            Console.WriteLine("{+} Added New Password: " + a)
+            Console.WriteLine("{+} MD5 Hash: " + GetMD5Hash(a))
+            Console.WriteLine("{+} SHA-256 Hash: " + GetSHA256Hash(a))
+            Console.WriteLine("{+} SHA-1 Hash: " + GetSHA1Hash(a))
+        End If
+    End Function
     Public Function GetMD5Hash(ByVal input As String) As String
         Dim md5Hasher As New MD5CryptoServiceProvider()
         Dim data As Byte() = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input))

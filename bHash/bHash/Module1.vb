@@ -5,6 +5,10 @@ Module Module1
     Sub Main()
         Dim cmdVars As String() = Environment.GetCommandLineArgs
 
+        If cmdVars(1).StartsWith("-n") Then
+            UpdateFile(cmdVars(2), cmdVars(3))
+        End If
+
         If cmdVars(1).StartsWith("md5") Then
             If cmdVars(3).StartsWith("-r") Then
                 Hash = cmdVars(2)
@@ -12,11 +16,15 @@ Module Module1
                 Attempts = Convert.ToInt32(cmdVars(5)) * 5
                 StageMD5Session("-r")
             ElseIf cmdVars(3).StartsWith("-d") Then
-                If IO.File.Exists(cmdVars(4)) Then
-                    Hash = cmdVars(2)
-                    Dictionary = cmdVars(4)
-                    StageMD5Session("-d")
-                End If
+                Hash = cmdVars(2)
+                Dictionary = cmdVars(4)
+                StageMD5Session("-d")
+            ElseIf cmdVars(3).StartsWith("-a") Then
+                Hash = cmdVars(2)
+                Dictionary = "null"
+                DirectoryLocation = cmdVars(4).ToString
+                UseAllMethod = True
+                StageMD5Session("-d")
             End If
         End If
 
@@ -27,11 +35,15 @@ Module Module1
                 Attempts = Convert.ToInt32(cmdVars(5)) * 5
                 StageSHA256Session("-r")
             ElseIf cmdVars(3).StartsWith("-d") Then
-                If IO.File.Exists(cmdVars(4)) Then
-                    Hash = cmdVars(2)
-                    Dictionary = cmdVars(4)
-                    StageSHA256Session("-d")
-                End If
+                Hash = cmdVars(2)
+                Dictionary = cmdVars(4).ToString
+                StageSHA256Session("-d")
+            ElseIf cmdVars(3).StartsWith("-a") Then
+                Hash = cmdVars(2)
+                Dictionary = "null"
+                DirectoryLocation = cmdVars(4).ToString
+                UseAllMethod = True
+                StageSHA256Session("-d")
             End If
         End If
 
