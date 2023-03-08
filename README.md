@@ -3,9 +3,11 @@
 bHash is a hash cracking tool and dictionary converter designed for windows
 ===========================================================================
 
+
+[Notes]
 - Still In Development (latest release)
 - Windows 11 Supported
-- note: hash conversion can produce very large file sizes, its best to split dictionaries
+- hash conversion can produce very large file sizes, its best to split dictionaries
 
 
 [Hashtypes as of now]
@@ -42,7 +44,7 @@ bHash is a hash cracking tool and dictionary converter designed for windows
 - ex: bhash -c C:\example.txt C:\example_dictionary 5 -h raw
 
 
-Last Few Builds Notes:
+[Last Few Builds Notes]
 - Added Write Function To Update Lists
 - Set Option To Use All Dictionaries In A Directory
 - Added Function To Create New Dictionaries
