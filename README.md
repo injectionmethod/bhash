@@ -16,6 +16,9 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 
 
 [Commands Examples]
+
+- verbose mode | bhash [input] -v
+
 - see help | *bhash -h*
 
 - dictionary bruteforce | *bhash [hashtype] [hash] -d [chosen dictionaries]*
