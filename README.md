@@ -1,5 +1,5 @@
 # bhash
-bHash is a hash cracking tool and and dictionary converter designed for windows command line
+bHash is a hash cracking tool and dictionary converter
 
 - Still In Development (latest release)
 - Windows 11 Supported
