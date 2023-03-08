@@ -8,7 +8,7 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
 -*sha1*
 -*sha256*
 -*md5*
-
+-*raw*
 
 
 [Commands Examples]
@@ -24,6 +24,8 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
 
 - bruteforce a hashlist | *bhash scn [file] [-d or -a] [chosen dictionary or directory] [hashtype]*
 
+- create a new dictionary | *bhash -c [outputfile] [compare-file] [threads] -h [hashtype]*
+
 [Commands Copy Pastes]
 - ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
 - ex: bhash sha265 1b5c3 -a C:\exampleDirectory
@@ -32,11 +34,12 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
 - ex: bhash -n examplepassword123 C:\examplefile
 - ex: bhash scn C:\example-dump.txt -d C:\examplefile1,C:\examplefile2 sha256
 - ex: bhash scn C:\example-dump.txt -a C:\exampleDirectory sha256
-
+- ex: bhash -c C:\example.txt C:\example_dictionary 5 -h raw
 
 
 Last Few Builds Notes:
 - Added Write Function To Update Lists
 - Set Option To Use All Dictionaries In A Directory
+- Added Function To Create New Dictionaries
 - Updated HashCracking Module, Included The Ability To Bruteforce A Hashlist, see [Commands Examples]
 - Lazy Code, Working On Cleanup
