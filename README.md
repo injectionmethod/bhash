@@ -5,6 +5,7 @@ bHash is a hash cracking tool and and dictionary converter designed for windows 
 - Windows 11 Supported
 - note: hash conversion can produce very large file sizes, its best to split dictionaries
 
+
 [Hashtypes as of now]
 -*sha1*
 -*sha256*
@@ -26,6 +27,7 @@ bHash is a hash cracking tool and and dictionary converter designed for windows 
 - bruteforce a hashlist | *bhash scn [file] [-d or -a] [chosen dictionary or directory] [hashtype]*
 
 - create a new dictionary | *bhash -c [outputfile] [compare-file] [threads] -h [hashtype]*
+
 
 [Commands Copy Pastes]
 - ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
