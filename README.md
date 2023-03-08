@@ -54,3 +54,7 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 - Updated HashCracking Module, Included The Ability To Bruteforce A Hashlist, see [Commands Examples]
 - Fixed Formatting And Added Verbose Output
 - Lazy Code, Working On Cleanup
+
+
+[Wordlist Information]
+- https://github.com/injectionmethod/bhash/blob/main/No%20wordlists%3F
