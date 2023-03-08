@@ -3,8 +3,11 @@ Imports System.Security.Cryptography
 Imports System.Text
 
 Module DictionaryGeneration
+    Public Stream As StreamWriter
     Public WriteLocation As String
     Public method As String
+    Public EnableHashing As Boolean
+    Public HashingMethod As String
     Public Function CreateNTLMHashDictionaryFile()
         Console.WriteLine("Converting > " + Dictionary + " > " + method + " > " + WriteLocation)
         Dim sw As New IO.StreamWriter(WriteLocation) : sw.AutoFlush = True
@@ -20,7 +23,7 @@ Module DictionaryGeneration
                 End While
             End Using
         End If
-        Console.WriteLine("Converted All Items In Dataset")
+        Console.WriteLine("Converted All Items In Dataset To " + method.ToUpper + "Hashes")
     End Function
     Public Function UpdateFile(a As String, b As String)
         If IO.File.Exists(b) Then
@@ -41,6 +44,57 @@ Module DictionaryGeneration
             Console.WriteLine("{+} SHA-256 Hash: " + GetSHA256Hash(a))
             Console.WriteLine("{+} SHA-1 Hash: " + GetSHA1Hash(a))
         End If
+    End Function
+
+    Public Function CreateNewDictionary()
+        Dim b = 0
+        Dim workable As Boolean = False
+        While b < 1300000
+            b += 1
+            Dim final As String
+            Dim _INITIATE_FIRST As String = RandomString(4, 8)
+            For Each line In IO.File.ReadAllLines(Dictionary)
+                If line.Contains(_INITIATE_FIRST) Then
+                    workable = True
+                End If
+            Next
+            Dim _INITIATE_SECOND As String = RandomString(4, 5)
+            For Each line In IO.File.ReadAllLines(Dictionary)
+                If line.Contains(_INITIATE_SECOND) Then
+                    workable = True
+                End If
+            Next
+            If workable = True Then
+                final = _INITIATE_FIRST + _INITIATE_SECOND
+                If EnableHashing = True Then
+                    If HashingMethod = "md5" Then
+                        Stream.WriteLine(GetMD5Hash(final))
+                        Console.WriteLine("{+} " + GetMD5Hash(final))
+                    ElseIf Hashingmethod = "sha256" Then
+                        Stream.WriteLine(GetSHA256Hash(final))
+                        Console.WriteLine("{+} " + GetSHA256Hash(final))
+                    ElseIf Hashingmethod = "sha1" Then
+                        Stream.WriteLine(GetSHA1Hash(final))
+                        Console.WriteLine("{+} " + GetSHA1Hash(final))
+                    ElseIf HashingMethod = "raw" Then
+                        Stream.WriteLine(final)
+                        Console.WriteLine("{+} " + final)
+                    End If
+                End If
+            End If
+        End While
+        Found = True
+    End Function
+    Public Function RandomString(minCharacters As Integer, maxCharacters As Integer)
+        Dim s As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz"
+        Static r As New Random
+        Dim chactersInString As Integer = r.Next(minCharacters, maxCharacters)
+        Dim sb As New System.Text.StringBuilder
+        For i As Integer = 1 To chactersInString
+            Dim idx As Integer = r.Next(0, s.Length)
+            sb.Append(s.Substring(idx, 1))
+        Next
+        Return sb.ToString()
     End Function
     Public Function GetMD5Hash(ByVal input As String) As String
         Dim md5Hasher As New MD5CryptoServiceProvider()

@@ -10,7 +10,9 @@ Module HashCracking
     Public Dictionary As String
     Public DirectoryLocation As String
     Public UseAllMethod As Boolean
+    Public Verbose As Boolean = False
 
+    Private SessionFound As New List(Of String)
 
     'START MD5 METHODS
     Public Function GuessMD5HashByteBrute() As String
@@ -51,8 +53,6 @@ Module HashCracking
                 hash_string = "@/md5/cracked?=" + Hash + " > " + Upperletter
                 Console.WriteLine(hash_string)
                 Exit Function
-            Else
-                Console.WriteLine("{+} Guess 1 > Not Found")
             End If
         Next
 
@@ -64,14 +64,13 @@ Module HashCracking
                 hash_string = "@/md5/cracked?=" + Hash + " > " + Lowerletter
                 Console.WriteLine(hash_string)
                 Exit Function
-            Else
-                Console.WriteLine("{+} Guess 2 > Not Found")
             End If
         Next
 
         If Dictionary IsNot Nothing Then
             If UseAllMethod = True Then
                 For Each dict As String In IO.Directory.GetFiles(DirectoryLocation)
+                    Console.WriteLine("Trying Dictionary: " + Path.GetFileNameWithoutExtension(dict))
                     Using reader As New StreamReader(dict)
                         While Not reader.EndOfStream
                             If Found = False Then
@@ -83,7 +82,9 @@ Module HashCracking
                                     Console.WriteLine(hash_string)
                                     Found = True
                                 Else
-                                    Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    If Verbose = True Then
+                                        Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    End If
                                 End If
                             Else
                                 Exit Function
@@ -93,6 +94,7 @@ Module HashCracking
                 Next
             Else
                 For Each dict As String In Strings.Split(Dictionary, ",", -1)
+                    Console.WriteLine("Trying Dictionary: " + Path.GetFileNameWithoutExtension(dict))
                     Using reader As New StreamReader(dict)
                         While Not reader.EndOfStream
                             If Found = False Then
@@ -104,7 +106,9 @@ Module HashCracking
                                     Console.WriteLine(hash_string)
                                     Found = True
                                 Else
-                                    Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    If Verbose = True Then
+                                        Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    End If
                                 End If
                             Else
                                 Exit Function
@@ -186,6 +190,7 @@ Module HashCracking
         If Dictionary IsNot Nothing Then
             If UseAllMethod = True Then
                 For Each dict As String In IO.Directory.GetFiles(DirectoryLocation)
+                    Console.WriteLine("Trying Dictionary: " + Path.GetFileNameWithoutExtension(dict))
                     Using reader As New StreamReader(dict)
                         While Not reader.EndOfStream
                             If Found = False Then
@@ -197,7 +202,9 @@ Module HashCracking
                                     Console.WriteLine(hash_string)
                                     Found = True
                                 Else
-                                    Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    If Verbose = True Then
+                                        Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    End If
                                 End If
                             Else
                                 Exit Function
@@ -207,6 +214,7 @@ Module HashCracking
                 Next
             Else
                 For Each dict As String In Strings.Split(Dictionary, ",", -1)
+                    Console.WriteLine("Trying Dictionary: " + Path.GetFileNameWithoutExtension(dict))
                     Using reader As New StreamReader(dict)
                         While Not reader.EndOfStream
                             If Found = False Then
@@ -218,7 +226,9 @@ Module HashCracking
                                     Console.WriteLine(hash_string)
                                     Found = True
                                 Else
-                                    Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    If Verbose = True Then
+                                        Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    End If
                                 End If
                             Else
                                 Exit Function
@@ -274,11 +284,11 @@ Module HashCracking
 
         For Each Upperletter As Char In Enumerable.Range(Convert.ToInt16("A"c), 26) _
                                      .Select(Function(i) Convert.ToChar(i))
-            Dim U = GetSHA256Hash(Upperletter.ToString)
+            Dim U = GetSHA1Hash(Upperletter.ToString)
             If U = Hash Then
                 hash_recovered = True
                 Found = True
-                hash_string = "@/sha256/cracked?=" + Hash + " > " + Upperletter
+                hash_string = "@/sha1/cracked?=" + Hash + " > " + Upperletter
                 Console.WriteLine(hash_string)
                 Exit Function
             End If
@@ -286,36 +296,65 @@ Module HashCracking
 
         For Each Lowerletter As Char In Enumerable.Range(Convert.ToInt16("A"c), 26) _
                                      .Select(Function(i) Convert.ToChar(i))
-            Dim L = GetSHA256Hash(Lowerletter.ToString.ToLower)
+            Dim L = GetSHA1Hash(Lowerletter.ToString.ToLower)
             If L = Hash Then
                 Found = True
-                hash_string = "@/sha256/cracked?=" + Hash + " > " + Lowerletter
+                hash_string = "@/sha1/cracked?=" + Hash + " > " + Lowerletter
                 Console.WriteLine(hash_string)
                 Exit Function
             End If
         Next
 
         If Dictionary IsNot Nothing Then
-            For Each dict As String In Strings.Split(Dictionary, ",", -1)
-                Using reader As New StreamReader(dict)
-                    While Not reader.EndOfStream
-                        If Found = False Then
-                            Dim w = reader.ReadLine
-                            Dim Word = GetSHA256Hash(w)
-                            If Word = Hash Then
-                                hash_recovered = True
-                                hash_string = "@/sha256/cracked?=" + w + " > " + Word
-                                Console.WriteLine(hash_string)
-                                Found = True
+            If UseAllMethod = True Then
+                For Each dict As String In IO.Directory.GetFiles(DirectoryLocation)
+                    Console.WriteLine("Trying Dictionary: " + Path.GetFileNameWithoutExtension(dict))
+                    Using reader As New StreamReader(dict)
+                        While Not reader.EndOfStream
+                            If Found = False Then
+                                Dim w = reader.ReadLine
+                                Dim Word = GetSHA1Hash(w)
+                                If Word = Hash Then
+                                    hash_recovered = True
+                                    hash_string = "@/sha1/cracked?=" + w + " > " + Word
+                                    Console.WriteLine(hash_string)
+                                    Found = True
+                                Else
+                                    If Verbose = True Then
+                                        Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    End If
+                                End If
                             Else
-                                Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                Exit Function
                             End If
-                        Else
-                            Exit Function
-                        End If
-                    End While
-                End Using
-            Next
+                        End While
+                    End Using
+                Next
+            Else
+                For Each dict As String In Strings.Split(Dictionary, ",", -1)
+                    Console.WriteLine("Trying Dictionary: " + Path.GetFileNameWithoutExtension(dict))
+                    Using reader As New StreamReader(dict)
+                        While Not reader.EndOfStream
+                            If Found = False Then
+                                Dim w = reader.ReadLine
+                                Dim Word = GetSHA1Hash(w)
+                                If Word = Hash Then
+                                    hash_recovered = True
+                                    hash_string = "@/sha1/cracked?=" + w + " > " + Word
+                                    Console.WriteLine(hash_string)
+                                    Found = True
+                                Else
+                                    If Verbose = True Then
+                                        Console.WriteLine(w + " > " + Word + " > " + Hash + " > !=Hash")
+                                    End If
+                                End If
+                            Else
+                                Exit Function
+                            End If
+                        End While
+                    End Using
+                Next
+            End If
         End If
 
         If Found = False Then
@@ -324,7 +363,68 @@ Module HashCracking
     End Function
     'END SHA 1 METHODS
 
-    'START NTLM METHODS
+    'START GLOBAL METHODS
+    Function BruteForceHashList(file As String, method As String)
+        For Each f In IO.File.ReadAllLines(file)
+            If UseAllMethod = True Then
+                For Each dict As String In IO.Directory.GetFiles(DirectoryLocation)
+                    Using reader As New StreamReader(dict)
+                        While Not reader.EndOfStream
+                            Dim w = reader.ReadLine
+                            Dim Word = DetermineMethodAndReturn(method, w)
+                            If Word = f Then
+                                If Not SessionFound.Contains(Word) Then
+                                    Dim hash_string = "@/" + method + "/cracked?=" + w + " > " + DetermineMethodAndReturn(method, w)
+                                    Console.WriteLine(hash_string)
+                                    SessionFound.Add(Word)
+                                End If
+                            Else
+                                If Verbose = True Then
+                                    Console.WriteLine(w + " > " + Word + " > " + f + " > !=Hash")
+                                End If
+                            End If
 
-    'END NTLM METHODS
+                        End While
+                    End Using
+                Next
+            Else
+                For Each dict As String In Strings.Split(Dictionary, ",", -1)
+                    Using reader As New StreamReader(dict)
+                        While Not reader.EndOfStream
+
+                            Dim w = reader.ReadLine
+                            Dim Word = DetermineMethodAndReturn(method, w)
+                            If Word = f Then
+                                If Not SessionFound.Contains(Word) Then
+                                    Dim hash_string = "@/" + method + "/cracked?=" + w + " > " + DetermineMethodAndReturn(method, w)
+                                    Console.WriteLine(hash_string)
+                                    SessionFound.Add(Word)
+                                End If
+
+                            Else
+                                If Verbose = True Then
+                                    Console.WriteLine(w + " > " + Word + " > " + f + " > !=Hash")
+                                End If
+                            End If
+
+                        End While
+                    End Using
+                Next
+            End If
+        Next
+    End Function
+    Private Function DetermineMethodAndReturn(method As String, st As String)
+        Dim hashed As String
+        If method = "md5" Then
+            hashed = GetMD5Hash(st)
+        ElseIf method = "sha256" Then
+            hashed = GetSHA256Hash(st)
+        ElseIf method = "sha1" Then
+            hashed = GetSHA1Hash(st)
+        Else
+            hashed = "Invalid"
+        End If
+        Return hashed
+    End Function
+    'END GLOBAL METHODS
 End Module
