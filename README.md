@@ -4,9 +4,6 @@ bHash is a simple hash cracking tool and and NTLM attack dictionary converter
 - Windows 11 Supported
 - note: hash conversion can produce very large file sizes, its best to split dictionaries
 
-![image](https://user-images.githubusercontent.com/80434330/223851088-28a2af5c-f484-4f2f-b9ba-e843a93c29c9.png)
-
-
 [Hashtypes as of now]
 -*sha1*
 -*sha256*
