@@ -16,6 +16,7 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 -*md5*
 -*raw*
 
+
  
 [Commands Examples]
 
