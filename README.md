@@ -53,4 +53,5 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 - Set Option To Use All Dictionaries In A Directory
 - Added Function To Create New Dictionaries
 - Updated HashCracking Module, Included The Ability To Bruteforce A Hashlist, see [Commands Examples]
+- Fixed Formatting And Added Verbose Output
 - Lazy Code, Working On Cleanup
