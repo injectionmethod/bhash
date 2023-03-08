@@ -1,5 +1,7 @@
 # bhash
+===========================================================================
 bHash is a hash cracking tool and dictionary converter designed for windows
+===========================================================================
 
 - Still In Development (latest release)
 - Windows 11 Supported
