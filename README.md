@@ -11,7 +11,6 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 [Notes]
 - Still In Development (latest release)
 - Windows 11 Supported
-- hash conversion can produce very large file sizes, its best to split dictionaries
 
 
 [Commands Examples]
