@@ -34,6 +34,9 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 - create a new dictionary | *bhash -c [outputfile] [compare-file] [threads] -h [hashtype]*
 
 
+![image](https://user-images.githubusercontent.com/80434330/226053325-3c533af5-b369-43ca-bd2f-565ba62fbc9d.png)
+
+
 [Commands Copy Pastes]
 - ex: bhash -h
 - ex: bhash sha256 1b5c3 -d C:\examplefile1,C:\examplefile2
