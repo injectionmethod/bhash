@@ -3,10 +3,10 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 
 
 [Hashtypes as of now]
--*sha1*
--*sha256*
--*md5*
--*raw*
+- *sha1*
+- *sha256*
+- *md5*
+- *raw*
 
 [Notes]
 - Still In Development (latest release)
