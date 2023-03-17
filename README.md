@@ -36,9 +36,9 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 
 [Commands Copy Pastes]
 - ex: bhash -h
-- ex: bhash sha265 1b5c3 -d C:\examplefile1,C:\examplefile2
-- ex: bhash sha265 1b5c3 -a C:\exampleDirectory
-- ex: bhash sha265 1b5c3 -r 10 300000
+- ex: bhash sha256 1b5c3 -d C:\examplefile1,C:\examplefile2
+- ex: bhash sha256 1b5c3 -a C:\exampleDirectory
+- ex: bhash sha256 1b5c3 -r 10 300000
 - ex: bhash NTLM C:\examplefile C:\exampleoutput
 - ex: bhash -n examplepassword123 C:\examplefile
 - ex: bhash scn C:\example-dump.txt -d C:\examplefile1,C:\examplefile2 sha256
