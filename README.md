@@ -25,7 +25,7 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 
 - random bruteforce | *bhash [hashtype] [hash] -r [threads] [max attempts per thread]*
 
-- create hashlist for NTLM (indev) | *bhash NTLM -g [chosen dictionary] [output file]*
+- create hashlist (indev) | *bhash convert -g [hashtype] [chosen dictionary] [output file]*
  
 - update existing dictionary | *bhash -n [string] [file]*
 
@@ -42,7 +42,7 @@ bHash is a hash cracking tool and dictionary converter designed for windows comm
 - ex: bhash sha256 1b5c3 -d C:\examplefile1,C:\examplefile2
 - ex: bhash sha256 1b5c3 -a C:\exampleDirectory
 - ex: bhash sha256 1b5c3 -r 10 300000
-- ex: bhash NTLM C:\examplefile C:\exampleoutput
+- ex: bhash convert -g sha256 C:\examplefile C:\exampleoutput
 - ex: bhash -n examplepassword123 C:\examplefile
 - ex: bhash scn C:\example-dump.txt -d C:\examplefile1,C:\examplefile2 sha256
 - ex: bhash scn C:\example-dump.txt -a C:\exampleDirectory sha256
